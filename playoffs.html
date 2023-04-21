@@ -13,7 +13,6 @@ div {
   padding-left: 2%;
   padding-right: 25%;
 }
-}
 h1, h2 {
 	color: #0D494E;
 }
@@ -61,23 +60,42 @@ table tr, table th, table td {
 
 </style>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    setBodyPaddingTop();
-  });
-  window.addEventListener('hashchange', function() {
-    setBodyPaddingTop();
-  });
-  function setBodyPaddingTop() {
-    const topBarHeight = document.querySelector('.navigate').offsetHeight;
-    document.body.style.paddingTop = `${topBarHeight}px`;
-    if (window.location.hash) {
-      const hashElement = document.querySelector(window.location.hash);
-      if (hashElement) {
-        const topOffset = hashElement.offsetTop - topBarHeight - 10;
-        window.scrollTo({ top: topOffset });
-      }
-    }
+document.addEventListener('DOMContentLoaded', function() {
+setBodyPaddingTop();
+});
+window.addEventListener('hashchange', function() {
+setBodyPaddingTop();
+});
+function setBodyPaddingTop() {
+const topBarHeight = document.querySelector('.navigate').offsetHeight;
+document.body.style.paddingTop = `${topBarHeight}px`;
+if (window.location.hash) {
+  const hashElement = document.querySelector(window.location.hash);
+  if (hashElement) {
+    const topOffset = hashElement.offsetTop - topBarHeight - 10;
+    window.scrollTo({ top: topOffset });
   }
+}
+}
+console.log('Hello from JavaScript!');
+fetch('games.csv')
+  .then(response => response.text())
+  .then(data => {
+    const rows = data.split('\n');
+    const headers = rows[0].split(',');
+    const tableData = rows.slice(1).map(row => row.split(','));
+    const tbody = document.querySelector('#Scores tbody');
+    tableData.forEach(rowData => {
+      const tr = document.createElement('tr');
+      rowData.forEach(cellData => {
+        const td = document.createElement('td');
+        td.textContent = cellData;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(error => console.error(error));
 </script>
 
 
@@ -86,7 +104,7 @@ table tr, table th, table td {
 
 <body>
 
-<div class="navigate sticky" >
+<div class="navigate sticky">
   <a href="playoffs.html">Rules and Scoring</a>
   <a href="#Leaderboard">Leaderboard</a>
   <a href="#Picks">Picks</a>
@@ -95,7 +113,7 @@ table tr, table th, table td {
   <a href="#SBP">by Picks</a>
 </div>
 
-<div style="padding-left:2%; padding-right:25%">
+<div>
   <h1>2023 Stanley Cup Playoff Bracket</h1>
   <p>Welcome to the 2023 Stanley Cup Playoff Bracket. The last update to this page was on April 20th, at 20:57.
   <h2>Rules and Scoring</h2>At the beginning of each round, you will make predictions for the remainder of the playoffs. <br><br>Your first picks will be the First Round, Second Round, Conference Finals and Stanley Cup Finals. <br>Your second picks (submitted after the first round, before the second starts) will be the Second Round, Conference Finals and Stanley Cup Finals. <br>Your third picks (submitted after the second round, before the third starts) will be the Conference Finals and Stanley Cup Finals. <br>Your last pick (submitted after the conference finals, before the finals start) will be the  Stanley Cup Finals. <br><br><b>Make a prediction of both the team who wins, and how many games they will win in.</b>
@@ -124,8 +142,24 @@ table tr, table th, table td {
 </table>
   <br>Picks must be made and submitted before the start of the first game of each round.<br>If you want to submit picks you can email me at jbases042@gmail.com or text at (519) 902-4209.<br>The entry fee is $5, winner takes all, and the prize is $50.<br><br>Good luck!</p>
 </div>
-<div id="Leaderboard" style="padding-left:2%; padding-right:20%">
-	<h2 >Leaderboard</h2>
+<div id="Leaderboard">
+	<h2>Leaderboard</h2>
+</div>
+<div id="Scores">
+<table id="Scores">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Away</th>
+        <th> </th>
+        <th>Home</th>
+        <th> </th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </div>
 
 
