@@ -2,136 +2,154 @@
 <html>
 <title>2023 Stanley Cup Playoff Bracket</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-@media only screen and (max-width: 600px) {
-div {
-  padding: 0 2%;
-}
-}
-@media only screen and (min-width: 601px) {
-div {
-  padding-left: 2%;
-  padding-right: 25%;
-}
-}
-h1, h2 {
-	color: #0D494E;
-}
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: justify;
-}
-.navigate {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	overflow: hidden;
-	background-color: #0D494E;
-}
+	<style>
+	@media only screen and (max-width: 600px) {
+	div {
+	  padding: 0 2%;
+	}
+	}
+	@media only screen and (min-width: 601px) {
+	div {
+	  padding-left: 2%;
+	  padding-right: 25%;
+	}
+	}
+	h1, h2 {
+		color: #0D494E;
+	}
+	body {
+	  margin: 0;
+	  font-family: Arial, Helvetica, sans-serif;
+	  text-align: justify;
+	}
+	.navigate {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		overflow: hidden;
+		background-color: #0D494E;
+	}
 
-.navigate a {
-	float: left;
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
-}
+	.navigate a {
+		float: left;
+		color: #f2f2f2;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+	}
 
-.navigate a:hover {
-	background-color: #ddd;
-	color: black;
-}
+	.navigate a:hover {
+		background-color: #ddd;
+		color: black;
+	}
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
 
-table th, table td {
-	border: none;
-}
+	table th, table td {
+		border: none;
+	}
 
-table tr, table th, table td {
-	padding: 1px 10px;
-	text-align: center;
-	border: 1px solid black;
-}
+	table tr, table th, table td {
+		padding: 1px 10px;
+		text-align: center;
+		border: 1px solid black;
+	}
+	</style>
 
-</style>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-setBodyPaddingTop();
-});
-window.addEventListener('hashchange', function() {
-setBodyPaddingTop();
-});
-function setBodyPaddingTop() {
-const topBarHeight = document.querySelector('.navigate').offsetHeight;
-document.body.style.paddingTop = `${topBarHeight}px`;
-if (window.location.hash) {
-  const hashElement = document.querySelector(window.location.hash);
-  if (hashElement) {
-    const topOffset = hashElement.offsetTop - topBarHeight - 10;
-    window.scrollTo({ top: topOffset });
-  }
-}
-}
-fetch('games.csv')
-  .then(response => response.text())
-  .then(data => {
-    const rows = data.split('\n');
-    const headers = rows[0].split(',');
-    const tableData = rows.slice(1).map(row => row.split(','));
-    const tbody = document.querySelector('#Scores tbody');
-    tableData.forEach(rowData => {
-      const tr = document.createElement('tr');
-      rowData.forEach(cellData => {
-        const td = document.createElement('td');
-        td.textContent = cellData;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  })
-  .catch(error => console.error(error));
-fetch('leaderboard.csv')
-.then(response => response.text())
-.then(data => {
-const rows = data.split('\n');
-const headers = rows[0].split(',');
-const tableData = rows.slice(1).map(row => row.split(','));
-const tbody = document.querySelector('#board tbody');
-tableData.forEach(rowData => {
-  const tr = document.createElement('tr');
-  rowData.forEach(cellData => {
-    const td = document.createElement('td');
-    td.textContent = cellData;
-    tr.appendChild(td);
-  });
-  tbody.appendChild(tr);
-});
-})
-.catch(error => console.error(error));
-fetch('series.csv')
-.then(response => response.text())
-.then(data => {
-const rows = data.split('\n');
-const headers = rows[0].split(',');
-const tableData = rows.slice(1).map(row => row.split(','));
-const tbody = document.querySelector('#series tbody');
-tableData.forEach(rowData => {
-  const tr = document.createElement('tr');
-  rowData.forEach(cellData => {
-    const td = document.createElement('td');
-    td.textContent = cellData;
-    tr.appendChild(td);
-  });
-  tbody.appendChild(tr);
-});
-})
-.catch(error => console.error(error));
+	document.addEventListener('DOMContentLoaded', function() {
+	setBodyPaddingTop();
+	});
+	window.addEventListener('hashchange', function() {
+	setBodyPaddingTop();
+	});
+	function setBodyPaddingTop() {
+	const topBarHeight = document.querySelector('.navigate').offsetHeight;
+	document.body.style.paddingTop = `${topBarHeight}px`;
+	if (window.location.hash) {
+	  const hashElement = document.querySelector(window.location.hash);
+	  if (hashElement) {
+	    const topOffset = hashElement.offsetTop - topBarHeight - 10;
+	    window.scrollTo({ top: topOffset });
+	  }
+	}
+	}
+	fetch('games.csv')
+		.then(response => response.text())
+		.then(data => {
+		const rows = data.split('\n');
+		const headers = rows[0].split(',');
+		const tableData = rows.slice(1).map(row => row.split(','));
+		const tbody = document.querySelector('#Scores tbody');
+		tableData.forEach(rowData => {
+		  const tr = document.createElement('tr');
+		  rowData.forEach(cellData => {
+		    const td = document.createElement('td');
+		    td.textContent = cellData;
+		    tr.appendChild(td);
+		  });
+		  tbody.appendChild(tr);
+		});
+		})
+		.catch(error => console.error(error));
+	fetch('leaderboard.csv')
+		.then(response => response.text())
+		.then(data => {
+		const rows = data.split('\n');
+		const headers = rows[0].split(',');
+		const tableData = rows.slice(1).map(row => row.split(','));
+		const tbody = document.querySelector('#board tbody');
+		tableData.forEach(rowData => {
+		  const tr = document.createElement('tr');
+		  rowData.forEach(cellData => {
+		    const td = document.createElement('td');
+		    td.textContent = cellData;
+		    tr.appendChild(td);
+		  });
+		  tbody.appendChild(tr);
+		});
+		})
+		.catch(error => console.error(error));
+	fetch('series.csv')
+		.then(response => response.text())
+		.then(data => {
+		const rows = data.split('\n');
+		const headers = rows[0].split(',');
+		const tableData = rows.slice(1).map(row => row.split(','));
+		const tbody = document.querySelector('#series tbody');
+		tableData.forEach(rowData => {
+		  const tr = document.createElement('tr');
+		  rowData.forEach(cellData => {
+		    const td = document.createElement('td');
+		    td.textContent = cellData;
+		    tr.appendChild(td);
+		  });
+		  tbody.appendChild(tr);
+		});
+		})
+		.catch(error => console.error(error));
+	fetch('1bracket.csv')
+		.then(response => response.text())
+		.then(data => {
+		const rows = data.split('\n');
+		const headers = rows[0].split(',');
+		const tableData = rows.slice(1).map(row => row.split(','));
+		const tbody = document.querySelector('#1bracket tbody');
+		tableData.forEach(rowData => {
+		  const tr = document.createElement('tr');
+		  rowData.forEach(cellData => {
+		    const td = document.createElement('td');
+		    td.textContent = cellData;
+		    tr.appendChild(td);
+		  });
+		  tbody.appendChild(tr);
+		});
+		})
+		.catch(error => console.error(error));
 </script>
 </head>
 <body>
@@ -149,76 +167,91 @@ tableData.forEach(rowData => {
   <p>Welcome to the 2023 Stanley Cup Playoff Bracket. The last update to this page was on April 20th, at 20:57. This website <i>should</i> automatically update by noon each day with the previous day's results.</p>
   <h2>Rules and Scoring</h2>At the beginning of each round, you will make predictions for the remainder of the playoffs. <br><br>Your first picks will be the First Round, Second Round, Conference Finals and Stanley Cup Finals. <br>Your second picks (submitted after the first round, before the second starts) will be the Second Round, Conference Finals and Stanley Cup Finals. <br>Your third picks (submitted after the second round, before the third starts) will be the Conference Finals and Stanley Cup Finals. <br>Your last pick (submitted after the conference finals, before the finals start) will be the  Stanley Cup Finals. <br><br><b>Make a prediction of both the team who wins, and how many games they will win in.</b>
   	<br><br>With each selection you make, you will get <b>1</b> point if you guess the correct team, and an additional <b>1</b> point if you guess the correct number of games, totalling <b>2</b> points. You will guess <b>0</b> points for guessing the wrong team, even if the number of games is correct.<br><br>
-  <table>
-  <tr>
-    <th>Scenario</th>
-    <th>Points</th>
-  </tr>
-  <tr>
-    <th>Incorrect Team, Incorrect Games</th>
-    <td> 0 </td>
-  </tr>
-  <tr>
-    <th>Incorrect Team, Correct Games</th>
-    <td> 0 </td>
-  </tr>
-  <tr>
-    <th>Correct Team, Incorrect Games</th>
-    <td> 1 </td>
-  </tr>
-  <tr>
-    <th>Correct Team, Correct Games</th>
-    <td> 2 </td>
-  </tr>
-</table>
-  <br>Picks must be made and submitted before the start of the first game of each round.<br>If you want to submit picks you can email me at jbases042@gmail.com or text at (519) 902-4209.<br>The entry fee is $5, winner takes all, and the prize is $50.<br><br>Good luck!</p>
+	<table>
+	  <tr>
+	    <th>Scenario</th>
+	    <th>Points</th>
+	  </tr>
+	  <tr>
+	    <th>Incorrect Team, Incorrect Games</th>
+	    <td> 0 </td>
+	  </tr>
+	  <tr>
+	    <th>Incorrect Team, Correct Games</th>
+	    <td> 0 </td>
+	  </tr>
+	  <tr>
+	    <th>Correct Team, Incorrect Games</th>
+	    <td> 1 </td>
+	  </tr>
+	  <tr>
+	    <th>Correct Team, Correct Games</th>
+	    <td> 2 </td>
+	  </tr>
+	</table>
+	  <br>Picks must be made and submitted before the start of the first game of each round.<br>If you want to submit picks you can email me at jbases042@gmail.com or text at (519) 902-4209.<br>The entry fee is $5, winner takes all, and the prize is $50.<br><br>Good luck!</p>
 </div>
 <div id="Leaderboard">
 	<h2>Leaderboard</h2>
-<table id="board">
-<thead>
-  <tr>
-    <th>Position</th>
-    <th>Player</th>
-    <th>Points</th>
-    <th>Possible Points</th>
-  </tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</div>
+	<table id="board">
+	<thead>
+	  <tr>
+	    <th>Position</th>
+	    <th>Player</th>
+	    <th>Points*</th>
+	    <th>Possible Points**</th>
+	  </tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+	</div>
 <div id="Results">
 	<h2>Results</h2>
-<table id="series">
-<thead>
-  <tr>
-    <th>Series</th>
-    <th style="border-left: none; border-right: none"></th><th style="border-left: none; border-right: none"></th><th style="border-left: none; border-right: none"></th>
-    <th style="border-right: none"></th><th style="border-left: none; border-right: none"></th><th style="border-left: none; border-right: none"></th>
-    <th style="border-right: none">Result</th><th style="border-left: none"></th>
-  </tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</div>
+	<table id="series">
+	<thead>
+	<tr>
+	<th>Series</th>
+	<th style="border-left: none; border-right: none"></th><th style="border-left: none; border-right: none"></th><th style="border-left: none; border-right: none"></th>
+	<th style="border-right: none"></th><th style="border-left: none; border-right: none"></th><th style="border-left: none; border-right: none"></th>
+	<th style="border-right: none">Result</th><th style="border-left: none"></th>
+	</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+	<p><i>*Points reflects the amount of points obtained from series' that have finished.
+		<br>**Possible points reflects the total amount of points that a player could recieve, if the rest of the playoffs proceeded exactly according to their bracket. eg. If you predict Boston in 4 and Boston loses a game, you will lose a possible point because you can no longer get the number of games correct.</i></p>
+	</div>
+<div id="Picks">
+	<h2>Picks</h2>
+	<table id="1bracket">
+	<thead>
+	  <tr>
+	    <th>Series</th><th style="border-right: 0px;">Result</th><th style="border-left: 0px"></th>
+	    <th>Bayley</th><th>Jack</th><th>Carter</th><th>Kyle</th><th>Joe</th><th>Drew</th><th>Luke</th><th>Charlie</th><th>Taylor</th><th>Rob</th>
+	  </tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+	</div>
 <div id="Scores">
 	<h2>Scores</h2>
-<table id="Scores">
-<thead>
-  <tr>
-    <th>Date</th>
-    <th style="border-right:none">Away</th>
-    <th style="border-left:none"> </th>
-    <th style="border-right:none">Home</th>
-    <th style="border-left:none"> </th>
-    <th> </th>
-  </tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</div>
+	<table id="Scores">
+	<thead>
+	  <tr>
+	    <th>Date</th>
+	    <th style="border-right:none">Away</th>
+	    <th style="border-left:none"> </th>
+	    <th style="border-right:none">Home</th>
+	    <th style="border-left:none"> </th>
+	    <th> </th>
+	  </tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+	</div>
 </body>
 </html>
