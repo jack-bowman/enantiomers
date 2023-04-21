@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<title>Jack Bowman</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+h1, h2 {
+	color: #0D3349;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+}
+.navigate {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	overflow: hidden;
+	background-color: #0D3349;
+}
+
+.navigate a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.navigate a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table th, table td {
+	border: none;
+}
+
+table tr, table th, table td {
+	padding: 1px 10px;
+	text-align: center;
+	border: 1px solid black;
+}
+
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    setBodyPaddingTop();
+  });
+  window.addEventListener('hashchange', function() {
+    setBodyPaddingTop();
+  });
+  function setBodyPaddingTop() {
+    const topBarHeight = document.querySelector('.navigate').offsetHeight;
+    document.body.style.paddingTop = `${topBarHeight}px`;
+    if (window.location.hash) {
+      const hashElement = document.querySelector(window.location.hash);
+      if (hashElement) {
+        const topOffset = hashElement.offsetTop - topBarHeight - 10;
+        window.scrollTo({ top: topOffset });
+      }
+    }
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<div class="navigate sticky" >
+  <a href="index.html">About Me</a>
+  <a href="#cv">Curriculum Vitae</a>
+  <a href="#contact">Contact Me</a>
+  <a href="playoffs.html">2023 Playoff Bracket</a>
+</div>
+
+<div style="padding-left:2%; padding-right:25%">
+  <h1>Welcome!</h1>
+  <img src="me.jpg" width=400px>
+  <h2> My name is Jack Bowman, thank you for visiting my website! </h2>
+  <p style="font-size:20px">I am a recent (2023) graduate of Western University, where I obtained a BSc Honours Specialization in Chemistry. I have a passion for all things chemistry, I love organic synthesis, materials chemistry and polymer work, quantum chemistry, you name it. Most recently, my experience has been in the Workentin group at Western, towards the development of silver and gold nanoclusters with surface functionalities towards a variety of applications. Check out the group <a href="https://publish.uwo.ca/~mworkent/">here</a>! I have also spent some time with the <a href="https://gobbo-group.com/">Gobbo group</a> at the University of Trieste, working on biomimetic materials in the field of bottom-up synthetic biology. 
+  <br><br> 
+  Throughout my undergraduate degree, I have received 3 NSERC Undergraduate Student Research Awards (USRAs), awarded on the basis of academic standing, as well as a MITACS Globalink Award allowing me to carry out research in Trieste, Italy. I have also received the James D. McNabb Award at Western University, awarded to the student registered in fourth year of an Honors Specialization in Chemistry with he best overall record in the third year of the program, as well as a UWO In-Course Scholarship Year IV, awarded on academic standing. 
+  <br><br>
+  In the fall of 2023, I will begin a MSc as an NSERC CGS-M recipient at Western University, studying as a joint student between the Workentin group and <a href="">Gilroy group</a>. I'm looking forward to it!
+  <br><br>
+  Outside of chemistry, I love to play sports, with a non-exhaustive list including hockey, baseball, tennis, pickleball, and NOT golf (I am a terrible golfer, it brings out the worst of me, please do not take me golfing). I also enjoy a hike, a swim, a free skate, and other activities.
+  <br><br>
+  Beyond the outdoors, I love chess and am a sore loser and very graceful winner, I enjoy coding to automate my life's tasks and write in python, as well as html, javascript and css. Maybe our music tastes overlap, you can see what I listen to <a href="https://open.spotify.com/user/imjackbowman">here</a> if you promise not to judge.
+  <br><br>
+  Please reach out to me if you have any questions or oppotunities, you can find information on how to reach me <a href="#contact">below</a>!
+  </p>
+</div>
+<div id="cv", style="padding-left:2%; padding-right:25%">
+  <h2> Curriculum Vitae </h2>
+  <embed src="BowmanJack-cv-231027.pdf" width="75%" height="800"></embed>
+</div>
+
+<div id="contact" style="padding-left:2%; padding-right:25%">
+  <h2>Contact Me</h2>
+  <p style="font-size:20px">Welcome to the bottom of the page! If you want to contact me, you can reach me at jbowma4@uwo.ca. You can also find me at these websites:
+    <br><br>
+    <a href="https://www.instagram.com/jackbowman._/"><i class="fa fa-instagram" style="font-size:48px;color:#0D3349"></i></a>
+    &nbsp;&nbsp;<a href="https://www.linkedin.com/in/jack-bowman-aa3838258/"><i class="fa fa-linkedin" style="font-size:48px;color:#0D3349"></i></a></p>
+  </div>
+
+<div style="padding-left:2%; padding-right:25%">
+  <p style="font-size:14px;color:#387599"><i>This page was last updated on April 21, 2023.</i></p>
+</div>
+</body>
+</html>
