@@ -150,6 +150,24 @@
 		});
 		})
 		.catch(error => console.error(error));
+	fetch('brackettop.csv')
+		.then(response => response.text())
+		.then(data => {
+		const rows = data.split('\n');
+		const headers = rows[0].split(',');
+		const tableData = rows.slice(1).map(row => row.split(','));
+		const tbody = document.querySelector('#1bracket thead');
+		tableData.forEach(rowData => {
+		  const tr = document.createElement('tr');
+		  rowData.forEach(cellData => {
+		    const td = document.createElement('th');
+		    th.textContent = cellData;
+		    tr.appendChild(th);
+		  });
+		  tbody.appendChild(tr);
+		});
+		})
+		.catch(error => console.error(error));
 </script>
 </head>
 <body>
@@ -227,10 +245,6 @@
 	<h2>Picks</h2>
 	<table id="1bracket">
 	<thead>
-	  <tr>
-	    <th>Series</th><th style="border-right: 0px;">Result</th><th style="border-left: 0px"></th>
-	    <th>Bayley</th><th>Jack</th><th></th><th>Carter</th><th></th><th>Kyle</th><th></th><th>Joe</th><th></th><th>Drew</th><th></th><th>Luke</th><th></th><th>Charlie</th><th></th><th>Taylor</th><th></th><th>Rob</th>
-	  </tr>
 	</thead>
 	<tbody>
 	</tbody>
