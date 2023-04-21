@@ -150,23 +150,30 @@
 		});
 		})
 		.catch(error => console.error(error));
+	
+	function formatTableHead(tableId) {
 	fetch('brackettop.csv')
 		.then(response => response.text())
 		.then(data => {
-		const rows = data.split('\n');
-		const headers = rows[0].split(',');
-		const tableData = rows.slice(1).map(row => row.split(','));
-		const tbody = document.querySelector('#1bracket thead');
-		tableData.forEach(rowData => {
-		  const tr = document.createElement('tr');
-		  rowData.forEach(cellData => {
-		    const td = document.createElement('th');
-		    th.textContent = cellData;
-		    tr.appendChild(th);
-		  });
-		  tbody.appendChild(tr);
-		});
+			const rows = data.split('\n');
+			const headers = rows[0].split(',');
+			const thead = document.querySelector(`#${tableId} thead`);
+			const tr = document.createElement('tr');
+			headers.forEach(header => {
+				const th = document.createElement('th');
+				th.textContent = header;
+				tr.appendChild(th);
+			});
+			thead.appendChild(tr);
 		})
+		.catch(error => console.error(error));
+}
+
+formatTableHead('1bracket');
+formatTableHead('2bracket');
+formatTableHead('3bracket');
+formatTableHead('4bracket');
+
 		.catch(error => console.error(error));
 </script>
 </head>
