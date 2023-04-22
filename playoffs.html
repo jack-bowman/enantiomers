@@ -49,6 +49,7 @@
 
 	table {
   border-collapse: collapse;
+  border: 1px solid black;
   width: 100%;
 }
 
@@ -56,12 +57,14 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-th, td {
+td {
   text-align: left;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1 0px;
 }
 th {
+	text-align: left;
+  padding: 8px;
 	background-color: #0D494E;
 	color: white;
 	border: none;
@@ -316,6 +319,6 @@ xhr.send();
 	<tbody id="scores"></tbody>
 	</table>
 	</div>
-	<div><p>Thanks for visiting!</p></div> 
+	<div><p><i>Scores are pulled from <a href="https://www.hockey-reference.com/leagues/NHL_2023_games.html#games_playoffs">hockeyreference.com</a>, so they may not update immeadiately following the end of a game.</i></p></div> 
 </body>
 </html>
