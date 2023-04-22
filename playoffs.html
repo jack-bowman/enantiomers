@@ -3,6 +3,9 @@
 <title>2023 Stanley Cup Playoff Bracket</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
+	html {
+		zoom: 1;
+	}
 	@media only screen and (max-width: 600px) {
 	div {
 	  padding: 0 2%;
@@ -49,108 +52,156 @@
 		border-spacing: 0;
 	}
 
-	table th, table td {
+	table th {
 		border: none;
+		font-weight: bold;
+	}
+	table td {
+		border: none;
+		font-weight: normal;
 	}
 
 	table tr, table th, table td {
 		padding: 1px 10px;
 		text-align: center;
 		border: 1px solid black;
+		
 	}
 	</style>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-	setBodyPaddingTop();
-	});
-	window.addEventListener('hashchange', function() {
-	setBodyPaddingTop();
-	});
-	function setBodyPaddingTop() {
-	const topBarHeight = document.querySelector('.navigate').offsetHeight;
-	document.body.style.paddingTop = `${topBarHeight}px`;
-	if (window.location.hash) {
-	  const hashElement = document.querySelector(window.location.hash);
-	  if (hashElement) {
-	    const topOffset = hashElement.offsetTop - topBarHeight - 10;
-	    window.scrollTo({ top: topOffset });
-	  }
-	}
-	}
-	fetch('games.csv')
-		.then(response => response.text())
-		.then(data => {
-		const rows = data.split('\n');
-		const headers = rows[0].split(',');
-		const tableData = rows.slice(1).map(row => row.split(','));
-		const tbody = document.querySelector('#Scores tbody');
-		tableData.forEach(rowData => {
-		  const tr = document.createElement('tr');
-		  rowData.forEach(cellData => {
-		    const td = document.createElement('td');
-		    td.textContent = cellData;
-		    tr.appendChild(td);
-		  });
-		  tbody.appendChild(tr);
-		});
-		})
-		.catch(error => console.error(error));
-	fetch('leaderboard.csv')
-		.then(response => response.text())
-		.then(data => {
-		const rows = data.split('\n');
-		const headers = rows[0].split(',');
-		const tableData = rows.slice(1).map(row => row.split(','));
-		const tbody = document.querySelector('#board tbody');
-		tableData.forEach(rowData => {
-		  const tr = document.createElement('tr');
-		  rowData.forEach(cellData => {
-		    const td = document.createElement('td');
-		    td.textContent = cellData;
-		    tr.appendChild(td);
-		  });
-		  tbody.appendChild(tr);
-		});
-		})
-		.catch(error => console.error(error));
-	fetch('series.csv')
-		.then(response => response.text())
-		.then(data => {
-		const rows = data.split('\n');
-		const headers = rows[0].split(',');
-		const tableData = rows.slice(1).map(row => row.split(','));
-		const tbody = document.querySelector('#series tbody');
-		tableData.forEach(rowData => {
-		  const tr = document.createElement('tr');
-		  rowData.forEach(cellData => {
-		    const td = document.createElement('td');
-		    td.textContent = cellData;
-		    tr.appendChild(td);
-		  });
-		  tbody.appendChild(tr);
-		});
-		})
-		.catch(error => console.error(error));
-	fetch('1bracket.csv')
-		.then(response => response.text())
-		.then(data => {
-		const rows = data.split('\n');
-		const headers = rows[0].split(',');
-		const tableData = rows.slice(1).map(row => row.split(','));
-		const tbody = document.querySelector('#1bracket tbody');
-		tableData.forEach(rowData => {
-		  const tr = document.createElement('tr');
-		  rowData.forEach(cellData => {
-		    const td = document.createElement('td');
-		    td.textContent = cellData;
-		    tr.appendChild(td);
-		  });
-		  tbody.appendChild(tr);
-		});
-		})
-		.catch(error => console.error(error));
-
+document.addEventListener('DOMContentLoaded', function() {
+    setBodyPaddingTop();
+  });
+  window.addEventListener('hashchange', function() {
+    setBodyPaddingTop();
+  });
+  function setBodyPaddingTop() {
+    const topBarHeight = document.querySelector('.navigate').offsetHeight;
+    document.body.style.paddingTop = `${topBarHeight}px`;
+    if (window.location.hash) {
+      const hashElement = document.querySelector(window.location.hash);
+      if (hashElement) {
+        const topOffset = hashElement.offsetTop - topBarHeight - 10;
+        window.scrollTo({ top: topOffset });
+      }
+    }
+  }
+//Leaderboard Table
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var csv = this.responseText;
+    var csvArray = csv.split("\n").map(function(row) {
+      return row.split(",");
+    });
+    var table = document.getElementById("board");
+    for (var i = 0; i < csvArray.length; i++) {
+      if (csvArray[i].every(cell => cell.trim() === "")) {
+        continue;
+      }
+      var row = table.insertRow();
+      for (var j = 0; j < csvArray[i].length; j++) {
+        var cell = row.insertCell();
+        cell.innerHTML = csvArray[i][j];
+      }
+    }
+  }
+};
+xhttp.open("GET", "leaderboard.csv", true);
+xhttp.send();
+//Series Results Table
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var csv = this.responseText;
+    var csvArray = csv.split("\n").map(function(row) {
+      return row.split(",");
+    });
+    var table = document.getElementById("series");
+    for (var i = 0; i < csvArray.length; i++) {
+      if (csvArray[i].every(cell => cell.trim() === "")) {
+        continue;
+      }
+      var row = table.insertRow();
+      for (var j = 0; j < csvArray[i].length; j++) {
+        var cell = row.insertCell();
+        cell.innerHTML = csvArray[i][j];
+      }
+    }
+  }
+};
+xhttp.open("GET", "series.csv", true);
+xhttp.send();
+//Scores Table
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var csv = this.responseText;
+    var csvArray = csv.split("\n").map(function(row) {
+      return row.split(",");
+    });
+    var table = document.getElementById("scores");
+    for (var i = 0; i < csvArray.length; i++) {
+      if (csvArray[i].every(cell => cell.trim() === "")) {
+        continue;
+      }
+      var row = table.insertRow();
+      for (var j = 0; j < csvArray[i].length; j++) {
+        var cell = row.insertCell();
+        cell.innerHTML = csvArray[i][j];
+      }
+    }
+  }
+};
+xhttp.open("GET", "games.csv", true);
+xhttp.send();
+//General Player List
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var csv = this.responseText;
+    var csvArray = csv.split("\n").map(function(row) {
+      return row.split(",");
+    });
+    var table = document.getElementById("genplayerlist");
+    for (var i = 0; i < csvArray.length; i++) {
+      if (csvArray[i].every(cell => cell.trim() === "")) {
+        continue;
+      }
+      var row = table.insertRow();
+      for (var j = 0; j < csvArray[i].length; j++) {
+        var cell = row.insertCell();
+        cell.innerHTML = csvArray[i][j];
+      }
+    }
+  }
+};
+xhttp.open("GET", "brackettop.csv", true);
+xhttp.send();
+//Picks
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var csv = this.responseText;
+    var csvArray = csv.split("\n").map(function(row) {
+      return row.split(",");
+    });
+    var table = document.getElementById("firstpicks");
+    for (var i = 0; i < csvArray.length; i++) {
+      if (csvArray[i].every(cell => cell.trim() === "")) {
+        continue;
+      }
+      var row = table.insertRow();
+      for (var j = 0; j < csvArray[i].length; j++) {
+        var cell = row.insertCell();
+        cell.innerHTML = csvArray[i][j];
+      }
+    }
+  }
+};
+xhttp.open("GET", "1bracket.csv", true);
+xhttp.send();
 </script>
 </head>
 <body>
@@ -194,16 +245,11 @@
 </div>
 <div id="Leaderboard">
 	<h2>Leaderboard</h2>
-	<table id="board">
+	<table>
 	<thead>
-	  <tr>
-	    <th>Position</th>
-	    <th>Player</th>
-	    <th>Points*</th>
-	    <th>Possible Points**</th>
-	  </tr>
+		<th>Position</th><th>Player</th><th>Points*</th><th>Possible Points**</th>
 	</thead>
-	<tbody>
+	<tbody id="board">
 	</tbody>
 	</table>
 	<p><i>*Points reflects the amount of points obtained from series' that have finished.
@@ -211,7 +257,7 @@
 	</div>
 <div id="Results">
 	<h2>Results</h2>
-	<table id="series">
+	<table >
 	<thead>
 	<tr>
 	<th>Series</th>
@@ -220,22 +266,22 @@
 	<th style="border-right: none">Result</th><th style="border-left: none"></th>
 	</tr>
 	</thead>
-	<tbody>
+	<tbody id="series">
 	</tbody>
 	</table>
-	
+	</div>
 <div id="Picks">
 	<h2>Picks</h2>
-	<table id="1bracket">
-	<thead>
+	<table >
+	<thead id="genplayerlist">
 	</thead>
-	<tbody>
+	<tbody id="firstpicks">
 	</tbody>
 	</table>
 	</div>
 <div id="Scores">
 	<h2>Scores</h2>
-	<table id="Scores">
+	<table >
 	<thead>
 	  <tr>
 	    <th>Date</th>
@@ -246,8 +292,7 @@
 	    <th> </th>
 	  </tr>
 	</thead>
-	<tbody>
-	</tbody>
+	<tbody id="scores"></tbody>
 	</table>
 	</div>
 </body>
