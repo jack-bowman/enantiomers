@@ -61,8 +61,10 @@ th, td {
   padding: 8px;
   border: 1px solid #ddd;
 }
+th {
+	cursor: pointer;
+}
 	</style>
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     setBodyPaddingTop();
@@ -279,8 +281,9 @@ xhr.send();
 	</div>
 <div id="Picks">
 	<h2>Picks</h2>
-	<table >
-	<thead id="genplayerlist">
+	<table>
+	<thead>
+		<th>Matchup</th><th>Result</th><th></th><th>Bayley</th><th></th><th>Jack</th><th></th><th>Carter</th><th></th><th>Kyle</th><th></th><th>Joe</th><th></th><th>Drew</th><th></th><th>Luke</th><th></th><th>Charlie</th><th></th><th>Taylor</th><th></th><th>Rob</th><th></th>
 	</thead>
 	<tbody id="firstpicks" style>
 	</tbody>
@@ -302,5 +305,6 @@ xhr.send();
 	<tbody id="scores"></tbody>
 	</table>
 	</div>
+	<div><p>Thanks for visiting!</p></div> 
 </body>
 </html>
