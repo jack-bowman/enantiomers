@@ -75,151 +75,151 @@ th {
 }
 	</style>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    setBodyPaddingTop();
-  });
-  window.addEventListener('hashchange', function() {
-    setBodyPaddingTop();
-  });
-  function setBodyPaddingTop() {
-    const topBarHeight = document.querySelector('.navigate').offsetHeight;
-    document.body.style.paddingTop = `${topBarHeight}px`;
-    if (window.location.hash) {
-      const hashElement = document.querySelector(window.location.hash);
-      if (hashElement) {
-        const topOffset = hashElement.offsetTop - topBarHeight - 10;
-        window.scrollTo({ top: topOffset });
-      }
-    }
-  }
-//Leaderboard Table
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var csv = this.responseText;
-    var csvArray = csv.split("\n").map(function(row) {
-      return row.split(",");
-    });
-    var table = document.getElementById("board");
-    for (var i = 0; i < csvArray.length; i++) {
-      if (csvArray[i].every(cell => cell.trim() === "")) {
-        continue;
-      }
-      var row = table.insertRow();
-      for (var j = 0; j < csvArray[i].length; j++) {
-        var cell = row.insertCell();
-        cell.innerHTML = csvArray[i][j];
-      }
-    }
-  }
-};
-xhttp.open("GET", "leaderboard.csv", true);
-xhttp.send();
-//Series Results Table
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var csv = this.responseText;
-    var csvArray = csv.split("\n").map(function(row) {
-      return row.split(",");
-    });
-    var table = document.getElementById("series");
-    for (var i = 0; i < csvArray.length; i++) {
-      if (csvArray[i].every(cell => cell.trim() === "")) {
-        continue;
-      }
-      var row = table.insertRow();
-      for (var j = 0; j < csvArray[i].length; j++) {
-        var cell = row.insertCell();
-        cell.innerHTML = csvArray[i][j];
-      }
-    }
-  }
-};
-xhttp.open("GET", "series.csv", true);
-xhttp.send();
-//Scores Table
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var csv = this.responseText;
-    var csvArray = csv.split("\n").map(function(row) {
-      return row.split(",");
-    });
-    var table = document.getElementById("scores");
-    for (var i = 0; i < csvArray.length; i++) {
-      if (csvArray[i].every(cell => cell.trim() === "")) {
-        continue;
-      }
-      var row = table.insertRow();
-      for (var j = 0; j < csvArray[i].length; j++) {
-        var cell = row.insertCell();
-        cell.innerHTML = csvArray[i][j];
-      }
-    }
-  }
-};
-xhttp.open("GET", "games.csv", true);
-xhttp.send();
-//General Player List
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var csv = this.responseText;
-    var csvArray = csv.split("\n").map(function(row) {
-      return row.split(",");
-    });
-    var table = document.getElementById("genplayerlist");
-    for (var i = 0; i < csvArray.length; i++) {
-      if (csvArray[i].every(cell => cell.trim() === "")) {
-        continue;
-      }
-      var row = table.insertRow();
-      for (var j = 0; j < csvArray[i].length; j++) {
-        var cell = row.insertCell();
-        cell.innerHTML = csvArray[i][j];
-      }
-    }
-  }
-};
-xhttp.open("GET", "brackettop.csv", true);
-xhttp.send();
-//Picks
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var csv = this.responseText;
-    var csvArray = csv.split("\n").map(function(row) {
-      return row.split(",");
-    });
-    var table = document.getElementById("firstpicks");
-    for (var i = 0; i < csvArray.length; i++) {
-      if (csvArray[i].every(cell => cell.trim() === "")) {
-        continue;
-      }
-      var row = table.insertRow();
-      for (var j = 0; j < csvArray[i].length; j++) {
-        var cell = row.insertCell();
-        cell.innerHTML = csvArray[i][j];
-      }
-    }
-  }
-};
-xhttp.open("GET", "1bracket.csv", true);
-xhttp.send();
-const textFilePath = "lastrevision.txt";
-const xhr = new XMLHttpRequest();
-xhr.open("GET", textFilePath);
-xhr.onreadystatechange = function() {
-  if (xhr.readyState === XMLHttpRequest.DONE) {
-    if (xhr.status === 200) {
-      const textFileContents = xhr.responseText;
-      const paragraph = document.getElementById("lastrevision");
-      paragraph.innerHTML = paragraph.innerHTML.replace("<!--last revision-->", textFileContents);
-    }
-  }
-};
-xhr.send();
+	document.addEventListener('DOMContentLoaded', function() {
+	    setBodyPaddingTop();
+	  });
+	  window.addEventListener('hashchange', function() {
+	    setBodyPaddingTop();
+	  });
+	  function setBodyPaddingTop() {
+	    const topBarHeight = document.querySelector('.navigate').offsetHeight;
+	    document.body.style.paddingTop = `${topBarHeight}px`;
+	    if (window.location.hash) {
+	      const hashElement = document.querySelector(window.location.hash);
+	      if (hashElement) {
+	        const topOffset = hashElement.offsetTop - topBarHeight - 10;
+	        window.scrollTo({ top: topOffset });
+	      }
+	    }
+	  }
+	//Leaderboard Table
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    var csv = this.responseText;
+	    var csvArray = csv.split("\n").map(function(row) {
+	      return row.split(",");
+	    });
+	    var table = document.getElementById("board");
+	    for (var i = 0; i < csvArray.length; i++) {
+	      if (csvArray[i].every(cell => cell.trim() === "")) {
+	        continue;
+	      }
+	      var row = table.insertRow();
+	      for (var j = 0; j < csvArray[i].length; j++) {
+	        var cell = row.insertCell();
+	        cell.innerHTML = csvArray[i][j];
+	      }
+	    }
+	  }
+	};
+	xhttp.open("GET", "leaderboard.csv", true);
+	xhttp.send();
+	//Series Results Table
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    var csv = this.responseText;
+	    var csvArray = csv.split("\n").map(function(row) {
+	      return row.split(",");
+	    });
+	    var table = document.getElementById("series");
+	    for (var i = 0; i < csvArray.length; i++) {
+	      if (csvArray[i].every(cell => cell.trim() === "")) {
+	        continue;
+	      }
+	      var row = table.insertRow();
+	      for (var j = 0; j < csvArray[i].length; j++) {
+	        var cell = row.insertCell();
+	        cell.innerHTML = csvArray[i][j];
+	      }
+	    }
+	  }
+	};
+	xhttp.open("GET", "series.csv", true);
+	xhttp.send();
+	//Scores Table
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    var csv = this.responseText;
+	    var csvArray = csv.split("\n").map(function(row) {
+	      return row.split(",");
+	    });
+	    var table = document.getElementById("scores");
+	    for (var i = 0; i < csvArray.length; i++) {
+	      if (csvArray[i].every(cell => cell.trim() === "")) {
+	        continue;
+	      }
+	      var row = table.insertRow();
+	      for (var j = 0; j < csvArray[i].length; j++) {
+	        var cell = row.insertCell();
+	        cell.innerHTML = csvArray[i][j];
+	      }
+	    }
+	  }
+	};
+	xhttp.open("GET", "games.csv", true);
+	xhttp.send();
+	//General Player List
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    var csv = this.responseText;
+	    var csvArray = csv.split("\n").map(function(row) {
+	      return row.split(",");
+	    });
+	    var table = document.getElementById("genplayerlist");
+	    for (var i = 0; i < csvArray.length; i++) {
+	      if (csvArray[i].every(cell => cell.trim() === "")) {
+	        continue;
+	      }
+	      var row = table.insertRow();
+	      for (var j = 0; j < csvArray[i].length; j++) {
+	        var cell = row.insertCell();
+	        cell.innerHTML = csvArray[i][j];
+	      }
+	    }
+	  }
+	};
+	xhttp.open("GET", "brackettop.csv", true);
+	xhttp.send();
+	//Picks
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    var csv = this.responseText;
+	    var csvArray = csv.split("\n").map(function(row) {
+	      return row.split(",");
+	    });
+	    var table = document.getElementById("firstpicks");
+	    for (var i = 0; i < csvArray.length; i++) {
+	      if (csvArray[i].every(cell => cell.trim() === "")) {
+	        continue;
+	      }
+	      var row = table.insertRow();
+	      for (var j = 0; j < csvArray[i].length; j++) {
+	        var cell = row.insertCell();
+	        cell.innerHTML = csvArray[i][j];
+	      }
+	    }
+	  }
+	};
+	xhttp.open("GET", "1bracket.csv", true);
+	xhttp.send();
+	const textFilePath = "lastrevision.txt";
+	const xhr = new XMLHttpRequest();
+	xhr.open("GET", textFilePath);
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState === XMLHttpRequest.DONE) {
+	    if (xhr.status === 200) {
+	      const textFileContents = xhr.responseText;
+	      const paragraph = document.getElementById("lastrevision");
+	      paragraph.innerHTML = paragraph.innerHTML.replace("<!--last revision-->", textFileContents);
+	    }
+	  }
+	};
+	xhr.send();
 </script>
 </head>
 <!-- Google tag (gtag.js) -->
