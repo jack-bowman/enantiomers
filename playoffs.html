@@ -6,7 +6,7 @@
 	@media only screen and (max-width: 600px) {
 	div {
 	  padding: 0 2%;
-	}
+}
 	}
 	@media only screen and (min-width: 601px) {
 	div {
@@ -50,7 +50,10 @@
 	table {
   border-collapse: collapse;
   border: none;
-  overflow: scroll;
+  width: 100vw;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow: auto;
 }
 
 tr:nth-child(even) {
@@ -301,7 +304,7 @@ th {
 	</div>
 <div id="Picks">
 	<h2>Picks</h2>
-	<table>
+	<table style="display: block;">
 	<thead>
 		<th>Matchup</th><th>Result</th><th></th><th>Bayley</th><th></th><th>Jack</th><th></th><th>Carter</th><th></th><th>Kyle</th><th></th><th>Joe</th><th></th><th>Drew</th><th></th><th>Luke</th><th></th><th>Charlie</th><th></th><th>Taylor</th><th></th><th>Rob</th><th></th>
 	</thead>
