@@ -1,7 +1,7 @@
 2023-04-17,New York Islanders,1,Carolina Hurricanes,2, 
-2023-04-17,Minnesota Wild,3,Dallas Stars,2,2OT
-2023-04-17,Los Angeles Kings,4,Edmonton Oilers,3,OT
 2023-04-17,Florida Panthers,1,Boston Bruins,3, 
+2023-04-17,Los Angeles Kings,4,Edmonton Oilers,3,OT
+2023-04-17,Minnesota Wild,3,Dallas Stars,2,2OT
 2023-04-18,Seattle Kraken,3,Colorado Avalanche,1, 
 2023-04-18,New York Rangers,5,New Jersey Devils,1, 
 2023-04-18,Tampa Bay Lightning,7,Toronto Maple Leafs,3, 
@@ -10,9 +10,9 @@
 2023-04-19,New York Islanders,3,Carolina Hurricanes,4,OT
 2023-04-19,Minnesota Wild,3,Dallas Stars,7, 
 2023-04-19,Los Angeles Kings,2,Edmonton Oilers,4, 
-2023-04-20,New York Rangers,5,New Jersey Devils,1, 
-2023-04-20,Winnipeg Jets,2,Vegas Golden Knights,5, 
 2023-04-20,Tampa Bay Lightning,2,Toronto Maple Leafs,7, 
+2023-04-20,Winnipeg Jets,2,Vegas Golden Knights,5, 
+2023-04-20,New York Rangers,5,New Jersey Devils,1, 
 2023-04-20,Seattle Kraken,2,Colorado Avalanche,3, 
 2023-04-21,Boston Bruins,4,Florida Panthers,2, 
 2023-04-21,Edmonton Oilers,2,Los Angeles Kings,3,OT
@@ -23,9 +23,9 @@
 2023-04-22,Toronto Maple Leafs,4,Tampa Bay Lightning,3,OT
 2023-04-22,Vegas Golden Knights,5,Winnipeg Jets,4,2OT
 2023-04-23,Carolina Hurricanes,5,New York Islanders,2, 
-2023-04-23,Dallas Stars,3,Minnesota Wild,2, 
-2023-04-23,Boston Bruins,6,Florida Panthers,2, 
 2023-04-23,Edmonton Oilers,5,Los Angeles Kings,4,OT
+2023-04-23,Boston Bruins,6,Florida Panthers,2, 
+2023-04-23,Dallas Stars,3,Minnesota Wild,2, 
 2023-04-24,New Jersey Devils,3,New York Rangers,1, 
 2023-04-24,Colorado Avalanche,2,Seattle Kraken,3,OT
 2023-04-24,Toronto Maple Leafs,5,Tampa Bay Lightning,4,OT
@@ -35,20 +35,17 @@
 2023-04-25,Los Angeles Kings,3,Edmonton Oilers,6, 
 2023-04-26,Florida Panthers,4,Boston Bruins,3,OT
 2023-04-26,Seattle Kraken,3,Colorado Avalanche,2, 
-2023-04-27,New York Rangers,0,New Jersey Devils,4, 
 2023-04-27,Tampa Bay Lightning,4,Toronto Maple Leafs,2, 
 2023-04-27,Winnipeg Jets,1,Vegas Golden Knights,4, 
-2023-04-28,Boston Bruins, ,Florida Panthers, , 
-2023-04-28,Colorado Avalanche, ,Seattle Kraken, , 
-2023-04-28,Carolina Hurricanes, ,New York Islanders, , 
-2023-04-28,Dallas Stars, ,Minnesota Wild, , 
+2023-04-27,New York Rangers,0,New Jersey Devils,4, 
+2023-04-28,Boston Bruins,5,Florida Panthers,7, 
+2023-04-28,Dallas Stars,4,Minnesota Wild,1, 
+2023-04-28,Carolina Hurricanes,2,New York Islanders,1,OT
+2023-04-28,Colorado Avalanche,4,Seattle Kraken,1, 
 2023-04-29,Edmonton Oilers, ,Los Angeles Kings, , 
 2023-04-29,New Jersey Devils, ,New York Rangers, , 
 2023-04-29,Toronto Maple Leafs, ,Tampa Bay Lightning, , 
 2023-04-30,Florida Panthers, ,Boston Bruins, , 
-2023-04-30,New York Islanders, ,Carolina Hurricanes, , 
 2023-04-30,Seattle Kraken, ,Colorado Avalanche, , 
-2023-04-30,Minnesota Wild, ,Dallas Stars, , 
 2023-05-01,Los Angeles Kings, ,Edmonton Oilers, , 
-2023-05-01,New York Rangers, ,New Jersey Devils, , 
 2023-05-01,Tampa Bay Lightning, ,Toronto Maple Leafs, , 
