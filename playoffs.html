@@ -191,6 +191,7 @@ th {
 	xhttp.open("GET", "brackettop.csv", true);
 	xhttp.send();
 	//Picks
+	//1st
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 	  if (this.readyState == 4 && this.status == 200) {
@@ -212,6 +213,29 @@ th {
 	  }
 	};
 	xhttp.open("GET", "1bracket.csv", true);
+	xhttp.send();
+	//2nd
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    var csv = this.responseText;
+	    var csvArray = csv.split("\n").map(function(row) {
+	      return row.split(",");
+	    });
+	    var table = document.getElementById("secondpicks");
+	    for (var i = 0; i < csvArray.length; i++) {
+	      if (csvArray[i].every(cell => cell.trim() === "")) {
+	        continue;
+	      }
+	      var row = table.insertRow();
+	      for (var j = 0; j < csvArray[i].length; j++) {
+	        var cell = row.insertCell();
+	        cell.innerHTML = csvArray[i][j];
+	      }
+	    }
+	  }
+	};
+	xhttp.open("GET", "2bracket.csv", true);
 	xhttp.send();
 	const textFilePath = "lastrevision.txt";
 	const xhr = new XMLHttpRequest();
@@ -250,7 +274,6 @@ th {
 <div>
   <h1>2023 Stanley Cup Playoff Bracket</h1>
   <p id="lastrevision">Welcome to the 2023 Stanley Cup Playoff Bracket. The last update to this page was on <!--last revision-->. This website <i>should</i> automatically update by noon each day with the previous day's results.</p>
-  <p><b>The first round of playoff matchups are nearing a conclusion. Once it finishes on May 1st, you are able to submit your selections for the second round and carrying forward. As a reminder, both the initial picks you made and the second picks you make now will count separately. You can use this format to re-select your initial picks, doubling down on your first picks, or to pick different teams, ensuring that you get some points either way. Your submission must be made prior to the first game of the second round starting. Best of luck!</b></p>
   <h2>Rules and Scoring</h2>At the beginning of each round, you will make predictions for the remainder of the playoffs. <br><br>Your first picks will be the First Round, Second Round, Conference Finals and Stanley Cup Finals. <br>Your second picks (submitted after the first round, before the second starts) will be the Second Round, Conference Finals and Stanley Cup Finals. <br>Your third picks (submitted after the second round, before the third starts) will be the Conference Finals and Stanley Cup Finals. <br>Your last pick (submitted after the conference finals, before the finals start) will be the  Stanley Cup Finals. <br><br><b>Make a prediction of both the team who wins, and how many games they will win in.</b>
   	<br><br>With each selection you make, you will get <b>1</b> point if you guess the correct team, and an additional <b>1</b> point if you guess the correct number of games, totalling <b>2</b> points. You will guess <b>0</b> points for guessing the wrong team, even if the number of games is correct.<br><br>
 	<table>
@@ -308,11 +331,20 @@ th {
 	</div>
 <div id="Picks">
 	<h2>Picks</h2>
+	<h3>First Picks</h3>
 	<table style="display: block;">
 	<thead>
 		<th>Matchup</th><th>Result</th><th></th><th>Bayley</th><th></th><th>Jack</th><th></th><th>Carter</th><th></th><th>Kyle</th><th></th><th>Joe</th><th></th><th>Drew</th><th></th><th>Luke</th><th></th><th>Charlie</th><th></th><th>Taylor</th><th></th><th>Rob</th><th></th>
 	</thead>
 	<tbody id="firstpicks" style>
+	</tbody>
+	</table>
+	<h3>Second Picks</h3>
+	<table style="display: block;">
+	<thead>
+		<th>Matchup</th><th>Result</th><th></th><th>Bayley</th><th></th><th>Jack</th><th></th><th>Carter</th><th></th><th>Kyle</th><th></th><th>Joe</th><th></th><th>Drew</th><th></th><th>Luke</th><th></th><th>Charlie</th><th></th><th>Taylor</th><th></th><th>Rob</th><th></th>
+	</thead>
+	<tbody id="secondpicks" style>
 	</tbody>
 	</table>
 	</div>
