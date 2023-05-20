@@ -237,6 +237,30 @@ th {
 	};
 	xhttp.open("GET", "2bracket.csv", true);
 	xhttp.send();
+	//3rd
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    var csv = this.responseText;
+	    var csvArray = csv.split("\n").map(function(row) {
+	      return row.split(",");
+	    });
+	    var table = document.getElementById("thirdpicks");
+	    for (var i = 0; i < csvArray.length; i++) {
+	      if (csvArray[i].every(cell => cell.trim() === "")) {
+	        continue;
+	      }
+	      var row = table.insertRow();
+	      for (var j = 0; j < csvArray[i].length; j++) {
+	        var cell = row.insertCell();
+	        cell.innerHTML = csvArray[i][j];
+	      }
+	    }
+	  }
+	};
+	xhttp.open("GET", "3bracket.csv", true);
+	xhttp.send();
+	//Last revision
 	const textFilePath = "lastrevision.txt";
 	const xhr = new XMLHttpRequest();
 	xhr.open("GET", textFilePath);
@@ -347,6 +371,15 @@ th {
 	<tbody id="secondpicks" style>
 	</tbody>
 	</table>
+	<h3>Third Picks</h3>
+	<table style="display: block;">
+	<thead>
+		<th>Matchup</th><th>Result</th><th></th><th>Bayley</th><th></th><th>Jack</th><th></th><th>Carter</th><th></th><th>Kyle</th><th></th><th>Joe</th><th></th><th>Drew</th><th></th><th>Luke</th><th></th><th>Charlie</th><th></th><th>Taylor</th><th></th><th>Rob</th><th></th>
+	</thead>
+	<tbody id="thirdpicks" style>
+	</tbody>
+	</table>
+
 	</div>
 <div id="Scores">
 	<h2>Scores</h2>
