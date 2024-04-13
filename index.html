@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  	.outer-container {
+  	display: inline-block;
+      justify-content: left;
+      border: 3px solid #000;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 20px;
+     }
+    .outer-container-selection {
+  	display: inline-block;
+      justify-content: left;
+      border: 3px solid #000;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      margin-right: 10px;
+     }
+  	.inner-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border: 0px solid #ccc;
+      padding-bottom: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-right: 10px;
+     }
+     .inner-container-selection-menu {
+ 	  display: inline-flex; 
+      align-items: center;
+      justify-content: flex-start;
+      border: 0px solid #ccc;
+      padding-bottom: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-right: 10px;
+     }
+     .games-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      border: 0px solid #ccc;
+      padding-bottom: 0px;
+      background-color: #eee;
+      border-radius: 5px;
+     }
+    .toggle-button {
+      background-color: #eee;
+      border: 0px solid #aaa;
+      color: #555;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100px;
+      height: 100px;
+    }
+    .toggle-button:not(.selected):hover {
+      background-color: #98c0e3;
+    }
+    .delete-button {
+    	border: 0px solid #aaa;
+    	background-color: #fff;
+    	height: 10px;
+    	width: 10px;
+    }
+    .games-button {
+      background-color: #eee;
+      border: 0px solid #aaa;
+      color: #555;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 50px;
+      height: 50px;
+    }
+    .games-button:not(.selected):hover {
+      background-color: #98c0e3;
+    }
+    /* Style for the selected button */
+    .selected {
+      background-color: #007bff;
+      color: #fff;
+    }
+    /* Style for button container */
+    .button-container {
+    	margin-right: 10px;
+    }
+    .wager-amount-input {
+    	height: 10px;
+    }
+    .inline-heading {
+  	display: inline; /* or inline-block */
+  	font-family: Helvetica, Arial, sans-serif;
+  	margin-left: 10px;
+  	margin-right: 10px;
+  	font-weight: bold;
+	}
+	.regular-heading {
+  	font-family: Helvetica, Arial, sans-serif;
+  	margin-left: 10px;
+  	margin-right: 10px;
+  	font-weight: bold;
+	}
+	.wager-amount-input {
+	height: 20px;
+	width: 40px;
+	font-weight: bold;
+	}
+	.wager-amount-button {
+	height: 25px;
+	width: 25px;
+	}
+  </style>
+</head>
+<body style="background-color:#fff;">
+
+<!https://assets.nhle.com/logos/nhl/svg/XXX_light.svg>
+<h1 class="regular-heading">Welcome to the 2024 Stanley Cup Playoff Bracket</h1>
+<h2 class="regular-heading" style="font-weight: normal;">Make your selections below. When you hit submit, it will generate a code. Copy and paste this code, send it to Jack.</h2>
+<h2 class="regular-heading">The format of this bracket is...</h2>
+<h2 class="regular-heading" style="font-weight: normal;">
+You are given a pick on each series in the round. If you guess the winner right, you get 2 points, and if you correctly guess the winner and number of games then you get 5 points.
+<br><br>
+At the start of each series, you are given 10 extra picks too. You can find this in the 'Additional Picks' below. You can place these however you would like, place multiple picks on the same team, or spread them out. Each pick here will return 2 for the correct team and 5 for the correct team and number of games.
+<br><br>
+In the second, third and final round you will be able to bet the points you've accrued from previous rounds to the current round, with the same returns (2 for winner, 5 for winner and team)... but if you don't get the winner correct, you will lose those points. 
+<br><br>
+You need to use the 10 extra picks provided, but do not need to bet any of your own points from previous rounds.
+<br><br>
+The entry fee is $X, winner takes all! You can send the code to me at 519-902-4209 or jbases042@gmail.com
+</h2>
+<h1 class="regular-heading">Series Picks</h1>
+	<div class="outer-container">
+		<h2 class="regular-heading">Central Division</h2>
+		<div class="inner-container">
+		  <div class="button-container">
+		    <button id='VGK' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/VGK_light.svg"><b>VGK</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button id='DAL' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/DAL_light.svg"><b>DAL</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div>
+		</div><br>
+		 <div class="inner-container">
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/WPG_light.svg"><b>WPG</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/COL_light.svg"><b>COL</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div></div></div>
+
+	<div class="outer-container">
+		<h2 class="regular-heading">Pacific Division</h2>
+		<div class="inner-container">
+		  <div class="button-container">
+		    <button id='NSH' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/NSH_light.svg"><b>NSH</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button id='VAN' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/VAN_light.svg"><b>VAN</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div>
+		</div><br>
+		 <div class="inner-container">
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/LAK_light.svg"><b>LAK</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/EDM_light.svg"><b>EDM</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div></div></div>
+
+	<br>
+
+	<div class="outer-container">
+		<h2 class="regular-heading">Atlantic Division</h2>
+		<div class="inner-container">
+		  <div class="button-container">
+		    <button id='TBL' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/TBL_light.svg"><b>TBL</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button id='BOS' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/BOS_light.svg"><b>BOS</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div>
+		</div><br>
+		 <div class="inner-container">
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/TOR_light.svg"><b>TOR</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/FLA_light.svg"><b>FLA</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div></div></div>
+
+	<div class="outer-container">
+		<h2 class="regular-heading">Metropolitan Division</h2>
+		<div class="inner-container">
+		  <div class="button-container">
+		    <button id='PIT' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/PIT_light.svg"><b>PIT</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button id='NYR' class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/NYR_light.svg"><b>NYR</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div>
+		</div><br>
+		 <div class="inner-container">
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/NYI_light.svg"><b>NYI</b></button>
+		  </div>
+		  <div class="button-container">
+		    <button class="toggle-button" onclick="toggleButton(this)"><img src="https://assets.nhle.com/logos/nhl/svg/CAR_light.svg"><b>CAR</b></button>
+		  </div>
+		  <h3 class="inline-heading"> in </h3>
+		  <div class="games-container">
+		  <button class="games-button" onclick="selectGameCount(this)">4</button>
+		  <button class="games-button" onclick="selectGameCount(this)">5</button>
+		  <button class="games-button" onclick="selectGameCount(this)">6</button>
+		  <button class="games-button" onclick="selectGameCount(this)">7</button>
+		</div></div></div>
+
+<h1 id="remainingPicks" class="regular-heading">Additional Picks, You have 10 remaining free picks.</h1>
+<div id="wagerMenusContainer">
+  <div class="outer-container-selection wager-menu" style="display: none;">
+    <div class="inner-container-selection-menu">
+      <div class="button-container">
+        <select class="toggle-button team-select">
+          <option value="BOS">BOS</option>
+		  <option value="CAR">CAR</option>
+		  <option value="COL">COL</option>
+		  <option value="DAL">DAL</option>
+		  <option value="EDM">EDM</option>
+		  <option value="FLA">FLA</option>
+		  <option value="LAK">LAK</option>
+		  <option value="MIN">MIN</option>
+		  <option value="MTL">MTL</option>
+		  <option value="NSH">NSH</option>
+		  <option value="NYI">NYI</option>
+		  <option value="NYR">NYR</option>
+		  <option value="PIT">PIT</option>
+		  <option value="TBL">TBL</option>
+		  <option value="TOR">TOR</option>
+		  <option value="VGK">VGK</option>
+		  <option value="WPG">WPG</option>
+        </select>
+      </div>
+      <h3 class="inline-heading"> in </h3>
+      <div class="games-container" style="margin-right:10px">
+        <button class="games-button" onclick="selectGameCount(this)">4</button>
+        <button class="games-button" onclick="selectGameCount(this)">5</button>
+        <button class="games-button" onclick="selectGameCount(this)">6</button>
+        <button class="games-button" onclick="selectGameCount(this)">7</button>
+      </div>
+      <div class="wager-amount-container">
+        <button class="wager-amount-button" onclick="decreaseWagerAmount(this)">-</button>
+        <input type="number" class="wager-amount-input" value="1">
+        <button class="wager-amount-button" onclick="increaseWagerAmount(this)">+</button>
+      </div>
+      <button class="delete-button" onclick="deleteWagerMenu(this)"><img src="logos/Red_x.svg" style="width: 20px; height: 20px;"></button>
+    </div>
+  </div>
+</div>
+<button onclick="createNewWagerMenu()"><img src="logos/Add-wager.svg" style="width: 20px; height: 20px; align-items: center;"></button>
+
+<script>
+  let wagerMenuIndex = 0;
+
+  function updateRemainingPicks() {
+  const wagerMenus = document.querySelectorAll('.outer-container-selection');
+  let totalWagers = 0;
+  wagerMenus.forEach((menu) => {
+    const wagerAmountInput = menu.querySelector('.wager-amount-input');
+    totalWagers += parseInt(wagerAmountInput.value);
+  });
+  const remainingPicks = 11 - totalWagers;
+  document.getElementById('remainingPicks').textContent = `Additional Picks, You have ${remainingPicks} remaining free picks.`;
+}
+  function decreaseWagerAmount(button) {
+  const input = button.nextElementSibling;
+  if (parseInt(input.value) > 1) {
+    input.value = parseInt(input.value) - 1;
+    updateRemainingPicks();
+  }
+}
+
+function increaseWagerAmount(button) {
+  const input = button.previousElementSibling;
+  const remainingPicks = parseInt(document.getElementById('remainingPicks').textContent.match(/\d+/)[0]);
+  if (remainingPicks > 0) {
+    input.value = parseInt(input.value) + 1;
+    updateRemainingPicks();
+  }
+}
+
+function createNewWagerMenu() {
+  const remainingPicks = parseInt(document.getElementById('remainingPicks').textContent.match(/\d+/)[0]);
+  if (remainingPicks > 0) {
+    const wagerMenuTemplate = document.querySelector('.wager-menu');
+    const newWagerMenu = wagerMenuTemplate.cloneNode(true);
+    newWagerMenu.classList.remove('wager-menu');
+
+    const wagerMenusContainer = document.getElementById('wagerMenusContainer');
+    wagerMenusContainer.appendChild(newWagerMenu);
+    newWagerMenu.style.display = 'inline-block';
+
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach((button, index) => {
+      button.style.display = index === 0 ? 'none' : 'inline-block';
+    });
+
+    updateRemainingPicks();
+  }
+}
+  function deleteWagerMenu(button) {
+    const wagerMenu = button.closest('.outer-container-selection');
+    wagerMenu.remove();
+    updateRemainingPicks();
+  }
+  function selectGameCount(button) {
+    const gameCount = button.textContent;
+    button.parentElement.querySelectorAll('.games-button').forEach((btn) => {
+      btn.classList.remove('selected');
+    });
+    button.classList.add('selected');
+  }
+
+  function toggleButton(button) {
+    var buttons = button.parentElement.parentElement.querySelectorAll('.toggle-button');
+    buttons.forEach(function (btn) {
+      if (btn !== button && btn.classList.contains('selected')) {
+        btn.classList.remove('selected');
+      }
+    });
+
+    button.classList.toggle('selected');
+  }
+
+  
+
+  // Call the function initially to set the correct value
+  updateRemainingPicks();
+</script>
+
+</body>
+</html>
+
